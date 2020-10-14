@@ -33,7 +33,7 @@ export default {
   methods: {
     itemClick() {
       this.$router.replace(this.path)
-      console.log('---');
+      // console.log('---');
     }
   }
 }

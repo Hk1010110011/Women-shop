@@ -40,10 +40,9 @@ export default {
 .tab-control{
   display: flex;
   text-align: center;
-  margin-top: 12px;
   font-size: 15px;
-  height: 44px;
-  line-height: 44px;
+  height: 48px;
+  line-height: 48px;
   background-color: #fff;
 }
 .tab-control-item{

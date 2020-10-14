@@ -33,28 +33,36 @@ export default {
       click: true, // 设置点击响应
       observeDOM: true, // 设置PC端 允许滑动
       probeType: this.probeType, // 开启滚动监听
-      pullUpLoad: this.pullUpLoad,
+      pullUpLoad: this.pullUpLoad, // 开启
 
       })
     // 2,监听滚动的位置
-    this.scroll.on('scroll', (position) => {
+    if(this.probeType === 2 || this.probeType === 3 ){
+      this.scroll.on('scroll', (position) => {
       this.$emit('scroll', position)
     })
-    // 3.上拉加载更多
-    this.scroll.on('pullingUp', () =>{
+    }
+    //
+    // 3.监听scroll滚动到底部
+    if (this.pullUpLoad) {
+      this.scroll.on('pullingUp', () =>{
       this.$emit('pullingUp')
     })
+    }
   },
   methods: {
-    scrollTo(x, y, time=1000){
-      this.scroll && this.scroll.scrollTo(x, y, time)
+    scrollTo(x, y, time){
+      this.scroll && this.scroll.scrollTo(x, y, 500)
     },
     finishPullUp() {
-      this.scroll.finishPullUp()
+      this.scroll && this.scroll.finishPullUp()
     },
     refresh() {
-      console.log('---');
       this.scroll && this.scroll.refresh()
+      // console.log('---!!!');
+    },
+    getScrollY() {
+      return this.scroll ? this.scroll.y : 0
     }
   }
 }

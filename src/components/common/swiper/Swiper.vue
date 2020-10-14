@@ -118,6 +118,7 @@ export default {
     handleDom() {
       // 1.获取要操作的元素
       let swiperEl = document.querySelector('.swiper');
+
       let slidesEls = swiperEl.getElementsByClassName('slide');
 
       // 2.保存个数
