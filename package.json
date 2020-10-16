@@ -12,7 +12,9 @@
     "better-scroll": "^2.0.0",
     "core-js": "^3.6.5",
     "fastclick": "^1.0.6",
+    "iconv-lite": "^0.6.2",
     "normalize.css": "^8.0.1",
+    "postcss-svgo": "^4.0.2",
     "vue": "^2.6.11",
     "vue-router": "^3.4.3",
     "vuex": "^3.5.1"
