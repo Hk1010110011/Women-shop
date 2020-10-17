@@ -13,6 +13,12 @@ import BScroll from 'better-scroll'
 export default {
   name: 'Scroll',
   props: {
+    data: {
+      type: Array,
+      default: () => {
+        return []
+      }
+    },
     probeType: {
       type: Number,
       default: 0

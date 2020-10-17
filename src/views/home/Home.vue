@@ -50,19 +50,20 @@ import BackTop from 'components/content/backTop/BackTop'
 import {getHomeMultidata, getHomeGoods} from "network/home"
 import {debounce} from "common/utils.js"
 import {itemListenerMixin} from 'common/mixin'
+import {POP, NEW, SELL, BACKTOP_DISTANCE} from 'common/const'
 
 
 export default {
   name: 'Home',
   components: {
-    HomeSwiper,
-    RecommendView,
-    FeatureView,
     NavBar,
-    TabControl,
-    GoodsList,
     Scroll,
-    BackTop
+    TabControl,
+    BackTop,
+    HomeSwiper,
+    FeatureView,
+    RecommendView,
+    GoodsList,
   },
   data() {
     return {
@@ -73,7 +74,7 @@ export default {
         'new' : {page: 0, list: [] },
         'sell' : {page: 0, list: [] }
       },
-      currentType: 'pop',
+      currentType: POP,
       isShowBackTop: false,
       tabOffsetTop: 0,
       isTabFixed: false,
@@ -126,13 +127,13 @@ export default {
     tabClick(index) { // 点击推荐，设置type 为 'xxx' 款式
       switch(index) {
         case 0:
-          this.currentType = 'pop'
+          this.currentType = POP
           break;
         case 1:
-          this.currentType = 'new'
+          this.currentType = NEW
           break;
         case 2:
-          this.currentType = 'sell'
+          this.currentType = SELL
       }
       this.$refs.tabControl1.currentIndex = index;
       this.$refs.tabControl2.currentIndex = index;
@@ -142,7 +143,7 @@ export default {
     },
     contentScroll(position) { // 超出滚动范围 显示回到底部图标
       // 1.判断BackTop是否显示
-      this.isShowBackTop = (-position.y) > 2000
+      this.isShowBackTop = (-position.y) > BACKTOP_DISTANCE
 
       // 2.决定tabControl是否吸顶(position: fixed)
       this.isTabFixed = (-position.y) > this.tabOffsetTop

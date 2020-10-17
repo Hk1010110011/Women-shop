@@ -7,6 +7,11 @@ const Category = () => import('../views/category/Category')
 const Profile = () => import('../views/profile/Profile')
 const Detail =() => import('../views/detail/Detail')
 
+// 解决ElementUI导航栏中的vue-router在3.0版本以上重复点菜单报错问题
+const originalReplace = VueRouter.prototype.replace;
+VueRouter.prototype.replace = function replace(location) {
+  return originalReplace.call(this, location).catch(err => err);
+  }
 
 // 1.安装插件
 Vue.use(VueRouter)
